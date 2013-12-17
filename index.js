@@ -24,16 +24,21 @@ function extensible(A){
 };
 
 /**
- * make `B` inherit from `this`. Unless `final`,
- * `B` will also be made extensible.
+ * make `child` inherit from `this`. Unless `final`,
+ * `child` will also be made extensible. If you don't 
+ * pass a `child` a new one will be created.
  *
- * @param {Function} B
+ * @param {Function} [child]
  * @param {Boolean} [final]
- * @return {B}
+ * @return {child}
  */
 
-function extend(B, final){
+function extend(child, final){
+  var A = this;
+  var B = 'function' != typeof child
+    ? function(){ A.apply(this, arguments); }
+    : child;
   !final && extensible(B);
-  inherit(B, this);
-  return B
+  inherit(B, A);
+  return B;
 };

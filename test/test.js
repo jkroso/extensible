@@ -32,3 +32,12 @@ describe('A.extend(B, final)', function(){
     assert(B.extend === undefined);
   })
 })
+
+describe('A.extend()', function(){
+  it('should create a new function', function(){
+    var A = extensible(function(){ this.touched = true; });
+    var B = A.extend();
+    assert(new B() instanceof A);
+    assert(new B().touched === true);
+  })
+})
