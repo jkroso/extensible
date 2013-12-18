@@ -4,6 +4,7 @@
  */
 
 var inherit = require('inherit');
+var merge = require('merge');
 
 /**
  * Export `extensible`
@@ -40,5 +41,6 @@ function extend(child, final){
     : child;
   !final && extensible(B);
   inherit(B, A);
+  if ('object' == typeof child) merge(B.prototype, child);
   return B;
 };

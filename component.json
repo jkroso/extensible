@@ -8,10 +8,11 @@
   "main": "index.js",
   "scripts": ["index.js"],
   "dependencies": {
-    "component/inherit": "0.0.2"
+    "component/inherit": "0.0.2",
+    "yields/merge": "1.0.0"
   },
   "development": {
-    "visionmedia/mocha": "1.13.0",
-    "component/assert": "0.2.0"
+    "visionmedia/mocha": "*",
+    "component/assert": "*"
   }
 }
