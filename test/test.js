@@ -1,21 +1,14 @@
 
-var extensible = require('extensible');
+var extend = require('extensible');
 var assert = require('assert');
 
-describe('extensible(fn)', function(){
-  it('should add .extend() to its constructor', function(){
-    function A(){}
-    extensible(A);
-    assert(A.extend);
-  })
-})
+function A(){}
+A.extend = extend;
+A.prototype.name = 'a';
 
 describe('A.extend(fn)', function(){
   it('should extend B with its prototype', function(){
-    function A(){}
-    A.prototype.name = 'a';
     function B(){}
-    extensible(A);
     A.extend(B);
 
     var b = new B;
@@ -26,7 +19,6 @@ describe('A.extend(fn)', function(){
 
 describe('A.extend(fn, bool)', function(){
   it('should not make `B` extensible', function(){
-    var A = extensible(function(){});
     var B = A.extend(function(){}, 'final');
     assert(new B instanceof A);
     assert(B.extend === undefined);
@@ -35,7 +27,8 @@ describe('A.extend(fn, bool)', function(){
 
 describe('A.extend()', function(){
   it('should create a new function', function(){
-    var A = extensible(function(){ this.touched = true; });
+    var A = function(){ this.touched = true; };
+    A.extend = extend;
     var B = A.extend();
     assert(new B() instanceof A);
     assert(new B().touched === true);
@@ -44,10 +37,9 @@ describe('A.extend()', function(){
 
 describe('A.extend(obj)', function(){
   it('should create a new function and merge `obj` onto its prototype', function(){
-    var A = extensible(function(){});
     var B = A.extend({merged: true});
     assert(new B().merged === true);
     assert(B.merged === undefined);
-    assert(new B() instanceof A);
+    assert(new B instanceof A);
   })
 })
