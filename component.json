@@ -1,8 +1,8 @@
 {
   "name": "extensible",
-  "repo": "yields/extensible",
+  "repo": "jkroso/extensible",
   "description": "extensible constructors.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "keywords": ["extensible", "extend"],
   "license": "MIT",
   "main": "index.js",

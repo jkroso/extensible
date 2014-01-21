@@ -1,10 +1,10 @@
 {
   "name": "extensible",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dependencies": {
     "inherit": "nathan7/inherit#f1a75b4844",
     "merge": "yields/merge#2f357cb501"
   },
-  "repository": "git://github.com/yields/extensible.git",
+  "repository": "git://github.com/jkroso/extensible.git",
   "files": ["index.js"]
 }
